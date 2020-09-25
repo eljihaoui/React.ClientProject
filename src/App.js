@@ -1,6 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
+import Contact from './components/Contact/Conatact';
+import NavBar from './components/nabar/NavBar';
 import './App.css';
+import NavBar2 from './components/navbar2/NavBar2';
 
 function App() {
   return (
@@ -10,16 +13,11 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <NavBar />
+        <Contact />
+        <NavBar2 />
       </header>
-    </div>
+    </div >
   );
 }
 
