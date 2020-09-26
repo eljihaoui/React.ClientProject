@@ -7,9 +7,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Conatact tel="0675023023"/>
+        <Conatact tel="0675023023" />
         <Conatact name="mohamed el jihaoui" tel="0600060600" email="eljihaoui@gmail.com" />
-        <NavBar2 title="navigation bar"  />
+        <NavBar2 title="Navigation Bar" />
       </header>
     </div >
   );
