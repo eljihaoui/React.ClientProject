@@ -1,21 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
-import Contact from './components/Contact/Conatact';
-import NavBar from './components/nabar/NavBar';
 import './App.css';
 import NavBar2 from './components/navbar2/NavBar2';
+import Conatact from './components/Contact/Conatact';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <NavBar />
-        <Contact />
-        <NavBar2 />
+        <Conatact tel="0675023023"/>
+        <Conatact name="mohamed el jihaoui" tel="0600060600" email="eljihaoui@gmail.com" />
+        <NavBar2 title="navigation bar"  />
       </header>
     </div >
   );
