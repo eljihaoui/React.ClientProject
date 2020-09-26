@@ -1,18 +1,17 @@
 import React from 'react';
 import './App.css';
 import NavBar2 from './components/navbar2/NavBar2';
-import Conatact from './components/Contact/Conatact';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ListContacts from './components/Contact/ListContacts';
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <Conatact tel="0675023023" />
-        <Conatact name="mohamed el jihaoui" tel="0600060600" email="eljihaoui@gmail.com" />
-        <NavBar2 title="Navigation Bar" />
-      </header>
+      <div className="container">
+        <NavBar2 title="App Client" />
+        <ListContacts />
+      </div>
     </div >
   );
 }
-
 export default App;
