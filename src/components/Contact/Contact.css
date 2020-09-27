@@ -1,0 +1,10 @@
+.list-group-item{
+    color:blue;
+    font-weight: bold;
+}
+hr {
+    background-color:gray;
+}
+.fa-sort-down{
+cursor: pointer;
+}

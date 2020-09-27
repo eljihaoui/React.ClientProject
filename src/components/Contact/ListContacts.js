@@ -13,16 +13,9 @@ export default class ListContacts extends Component {
         const { contacts } = this.state;
         return (
             <div>
-                {
-                    contacts.map((contact) => (
-                        <Contact
-                            id={contact.id}
-                            name={contact.name}
-                            tel={contact.tel}
-                            email={contact.email}
-                        />
-                    ))
-                }
+                {contacts.map((contact) => (
+                    <Contact info={contact} /> // info is object that contains (tel,email,name,id)
+                ))}
             </div>
         )
     }

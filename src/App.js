@@ -3,6 +3,8 @@ import './App.css';
 import NavBar2 from './components/navbar2/NavBar2';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListContacts from './components/Contact/ListContacts';
+
+import 'font-awesome/css/font-awesome.min.css';
 function App() {
 
   return (
