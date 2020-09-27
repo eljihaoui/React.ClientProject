@@ -20,10 +20,8 @@ class Contact extends Component {
             payload: id
         })
         //this.props.deleteContactFromChild();
-
     }
     // in react call function without ()
-
     render() {
         const { id, name, tel, email } = this.props.data;
         return (

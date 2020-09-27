@@ -6,6 +6,7 @@ import ListContacts from './components/Contact/ListContacts';
 
 import 'font-awesome/css/font-awesome.min.css';
 import { Provider } from './components/Contact/context';
+import AddContact from './components/Contact/AddContact';
 function App() {
 
   return (
@@ -13,7 +14,14 @@ function App() {
       <div className="App">
         <div className="container">
           <NavBar2 title="App Client" />
-          <ListContacts />
+          <div className="row">
+            <div className="col-4">
+              <AddContact />
+            </div>
+            <div className="col-8">
+              <ListContacts />
+            </div>
+          </div>
         </div>
       </div >
     </Provider>
