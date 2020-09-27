@@ -9,12 +9,21 @@ export default class ListContacts extends Component {
             { id: 3, name: "mohamed KARAMI", tel: "0909RTT12323213", email: "KAMAL@gmail.com" }
         ]
     }
+    deleteContact(id) {
+        console.log("deleteContactFromChild called ....")
+        const { contacts } = this.state;
+        const newList = contacts.filter((contact) => contact.id !== id);
+        this.setState({
+            contacts: newList
+        })
+
+    }
     render() {
         const { contacts } = this.state;
         return (
             <div>
                 {contacts.map((contact) => (
-                    <Contact info={contact} /> // info is object that contains (tel,email,name,id)
+                    <Contact key={contact.id} data={contact} deleteContactFromChild={this.deleteContact.bind(this, contact.id)} /> // info is object that contains (tel,email,name,id)
                 ))}
             </div>
         )
