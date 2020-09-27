@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
 import Contact from './Contact';
-
+import { Consumer } from './context';
 export default class ListContacts extends Component {
-    state = {
-        contacts: [
-            { id: 1, name: "mohamed MESBAHI", tel: "12323213123123", email: "ALI@gmail.com" },
-            { id: 2, name: "mohamed JAWHARI", tel: "17676767676", email: "MAJID@gmail.com" },
-            { id: 3, name: "mohamed KARAMI", tel: "0909RTT12323213", email: "KAMAL@gmail.com" }
-        ]
-    }
+
     deleteContact(id) {
         console.log("deleteContactFromChild called ....")
         const { contacts } = this.state;
@@ -16,16 +10,24 @@ export default class ListContacts extends Component {
         this.setState({
             contacts: newList
         })
-
     }
     render() {
-        const { contacts } = this.state;
         return (
-            <div>
-                {contacts.map((contact) => (
-                    <Contact key={contact.id} data={contact} deleteContactFromChild={this.deleteContact.bind(this, contact.id)} /> // info is object that contains (tel,email,name,id)
-                ))}
-            </div>
+            <Consumer>
+                {value => (
+                    <div>
+                        {value.contacts.map((contact) => (
+                            <Contact
+                                key={contact.id}
+                                data={contact} // data is a object that contains (tel,email,name,id)
+                                deleteContactFromChild={this.deleteContact.bind(this, contact.id)}
+                            /> 
+                        ))}
+                    </div>
+                )}
+
+            </Consumer>
         )
+
     }
 }
