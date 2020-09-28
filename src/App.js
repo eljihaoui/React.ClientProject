@@ -3,27 +3,29 @@ import './App.css';
 import NavBar2 from './components/navbar2/NavBar2';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListContacts from './components/Contact/ListContacts';
-
 import 'font-awesome/css/font-awesome.min.css';
 import { Provider } from './components/Contact/context';
 import AddContact from './components/Contact/AddContact';
-function App() {
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import About from './components/Pages/About';
+import NotFound from './components/Pages/NotFound';
 
+function App() {
   return (
     <Provider>
-      <div className="App">
-        <div className="container">
-          <NavBar2 title="App Client" />
-          <div className="row">
-            <div className="col-4">
-              <AddContact />
-            </div>
-            <div className="col-8">
-              <ListContacts />
-            </div>
+      <Router>
+        <div className="App">
+          <div className="container">
+            <NavBar2 title="G.Contact" />
+            <Switch>
+              <Route exact path='/' component={ListContacts}></Route> {/*segement static*/}
+              <Route exact path='/Contact/add' component={AddContact}></Route>{/*segement static*/}
+              <Route exact path='/about/:id' component={About}></Route>{/*segement dynamic*/}
+              <Route component={NotFound}></Route>{/*segement static*/}
+            </Switch>
           </div>
-        </div>
-      </div >
+        </div >
+      </Router>
     </Provider>
   );
 }
