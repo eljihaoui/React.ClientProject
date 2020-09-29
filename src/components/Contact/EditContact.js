@@ -2,12 +2,26 @@ import Axios from 'axios';
 import React, { Component } from 'react';
 import TextInputGroup from '../helpers/TextInputGroup';
 import { Consumer } from './context';
-class AddContact extends Component {
+class EditContact extends Component {
+
     state = {
         name: "",
         phone: "",
         email: "",
         errors: {}
+    }
+
+    componentDidMount() {
+        const id = this.props.match.params.id;
+        Axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+            .then(res => {
+                console.log(res.data)
+                this.setState({
+                    name: res.data.name,
+                    phone: res.data.phone,
+                    email: res.data.email
+                })
+            }).catch(error => console.log(error));
     }
     onChangeInput = (e) => {
         this.setState({ [e.target.name]: e.target.value })
@@ -34,16 +48,17 @@ class AddContact extends Component {
             return;
         }
         console.log(this.state);
-        const newContact = {
+        const upContact = {
             name,
             email,
             phone
         }
-        Axios.post('https://jsonplaceholder.typicode.com/users', newContact)
+        const id = this.props.match.params.id;
+        Axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, upContact)
             .then(res => {
                 console.log(res.data);
                 dispatch({
-                    type: "ADD_CONTACT",
+                    type: "EDIT_CONTACT",
                     payload: res.data //Contact Object after persisting in database
                 });
             }).catch(error => console.log(error))
@@ -59,6 +74,9 @@ class AddContact extends Component {
     }
     render() {
         const { name, phone, email, errors } = this.state;
+        // console.log(this.state);
+        const id = this.props.match.params.id;
+
         return (
             <Consumer>
                 {value => {
@@ -67,7 +85,7 @@ class AddContact extends Component {
                         <div style={{ textAlign: "left" }}>
                             <div className="card">
                                 <div className="card-body">
-                                    <h4 className="card-title">Add Cantact</h4>
+                                    <h5 className="card-title text-danger">Edit Cantact N° : {id}</h5>
                                     <div className="card-text">
                                         <form onSubmit={this.submit.bind(this, dispatch, value.contacts.length)}>
                                             <TextInputGroup
@@ -94,7 +112,7 @@ class AddContact extends Component {
                                                 onChange={this.onChangeInput}
                                                 error={errors.email}
                                             />
-                                            <button type="submit" className="btn btn-success">Save</button>
+                                            <button type="submit" className="btn btn-warning">Edit Contact</button>
                                         </form>
                                     </div>
                                 </div>
@@ -107,4 +125,4 @@ class AddContact extends Component {
     }
 }
 
-export default AddContact
+export default EditContact

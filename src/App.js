@@ -9,6 +9,7 @@ import AddContact from './components/Contact/AddContact';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import About from './components/Pages/About';
 import NotFound from './components/Pages/NotFound';
+import EditContact from './components/Contact/EditContact';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
             <Switch>
               <Route exact path='/' component={ListContacts}></Route> {/*segement static*/}
               <Route exact path='/Contact/add' component={AddContact}></Route>{/*segement static*/}
-              <Route exact path='/about/:id' component={About}></Route>{/*segement dynamic*/}
+              <Route exact path='/Contact/edit/:id' component={EditContact}></Route>{/*segement dynamic path='/about/:id/:name' */}
+              <Route exact path='/about/:id' component={About}></Route>{/*segement dynamic path='/about/:id/:name' */}
               <Route component={NotFound}></Route>{/*segement static*/}
             </Switch>
           </div>
